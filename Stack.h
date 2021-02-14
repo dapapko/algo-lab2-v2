@@ -5,6 +5,8 @@
 #ifndef TIGER_LAB2_STACK_H
 #define TIGER_LAB2_STACK_H
 
+#include <stdexcept>
+
 template <typename T>
 class Node {
 public:
@@ -23,7 +25,12 @@ class Stack {
 public:
     Stack() : head(nullptr) {}
 
+    bool empty() {
+        return this->head == nullptr;
+    }
+
     T peek() {
+        if (empty()) throw std::length_error("Getting head of empty stack");
         return this->head->value;
     }
 
@@ -34,11 +41,12 @@ public:
         head  = item;
     }
 
-    bool empty() {
-        return this->head == nullptr;
-    }
+    
 
     T pop() {
+        if (empty()) {
+            throw std::length_error("Pop from empty stack");
+        }
         T temp = head->value;
         Node<T> *pv = head;
         head = head->ptr;
