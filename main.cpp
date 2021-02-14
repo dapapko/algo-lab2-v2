@@ -3,6 +3,10 @@
 using T = int;
 
 int main(int argc, char *argv[]) {
+    if(argc != 2) {
+        cout << "You should specify infix (i) or prefix (p) notation" << endl;
+        exit(1);
+    }
     char notation = *argv[1];
     string s;
     vector<string> v;
