@@ -22,7 +22,7 @@ public:
     }
 
     bool isOperator(string &exp) {
-        return (exp == "+" || exp == "-" || exp == "x" || exp == "/" || exp == "(");
+        return (exp == "+" || exp == "-" || exp == "x");
     }
 
     bool isOperand(string s) {
@@ -37,7 +37,7 @@ public:
     void infixToRPN() {
         map<string, int> ops;
         vector<string> res;
-        ops["x"] = 3; ops["/"] = 3;
+        ops["x"] = 3; 
         ops["+"] = 2; ops["-"] = 2;
         ops["("] = 1;
         Stack<string> result;
