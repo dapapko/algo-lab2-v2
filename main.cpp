@@ -1,9 +1,10 @@
 #include <iostream>
 #include "StackMachine.h"
+#include "Binnum.h"
 using T = int;
 
-int main(int argc, char *argv[]) {
-    if(argc != 2) {
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
         cout << "You should specify infix (i) or prefix (p) notation" << endl;
         exit(1);
     }
@@ -25,7 +26,8 @@ int main(int argc, char *argv[]) {
         cout << "Result (bin): ";
         result.prt_bin();
         cout << endl;
-    } catch (std::exception &e) {
+    }
+    catch (std::exception& e) {
         cout << "Smth is wrong with your expression" << endl;
     }
 }
