@@ -1,7 +1,7 @@
 #include <iostream>
 #include "StackMachine.h"
 #include "Binnum.h"
-using T = int;
+using T = char;
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -22,12 +22,13 @@ int main(int argc, char* argv[]) {
         if (notation == 'i') machine->infixToRPN();
         result = machine->evaluate();
 
-        cout << "Result: " << result << endl;
-        cout << "Result (bin): ";
-        result.prt_bin();
-        cout << endl;
+        cout << "Result: " << result.to_dec() << endl;
+        cout << "Result (bin): " << result << endl;
+       
     }
     catch (std::exception& e) {
         cout << "Smth is wrong with your expression" << endl;
+        cout << e.what() << endl;
     }
+    
 }

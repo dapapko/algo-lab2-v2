@@ -21,7 +21,7 @@ public:
 
 template <typename T>
 class Stack {
-    Node<T> *head;
+    Node<T>* head;
 public:
     Stack() : head(nullptr) {}
 
@@ -35,20 +35,20 @@ public:
     }
 
     void push(T value) {
-        auto *item = new Node<T>(value);
+        auto* item = new Node<T>(value);
         item->value = value;
         item->ptr = head;
-        head  = item;
+        head = item;
     }
 
-    
+
 
     T pop() {
         if (empty()) {
             throw std::length_error("Pop from empty stack");
         }
         T temp = head->value;
-        Node<T> *pv = head;
+        Node<T>* pv = head;
         head = head->ptr;
         delete pv;
         return temp;
@@ -56,7 +56,7 @@ public:
 
     ~Stack() {
         while (head) {
-            Node<T> *node = head;
+            Node<T>* node = head;
             head = head->ptr;
             delete node;
         }

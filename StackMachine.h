@@ -1,14 +1,8 @@
-//
-// Created by drford on 14.02.2021.
-//
-
-#ifndef TIGER_LAB2_STACKMACHINE_H
-#define TIGER_LAB2_STACKMACHINE_H
 #include <vector>
 #include <string>
 #include <iostream>
 #include <map>
-#include "Binnnum.h"
+#include "Binnum.h"
 #include "Stack.h"
 using namespace std;
 
@@ -21,7 +15,7 @@ public:
         expression = expr;
     }
 
-    bool isOperator(string &exp) {
+    bool isOperator(string& exp) {
         return (exp == "+" || exp == "-" || exp == "x");
     }
 
@@ -29,7 +23,8 @@ public:
         try {
             stoi(s);
             return true;
-        } catch (std::exception &e) {
+        }
+        catch (std::exception& e) {
             return false;
         }
     }
@@ -37,12 +32,12 @@ public:
     void infixToRPN() {
         map<string, int> ops;
         vector<string> res;
-        ops["x"] = 3; 
+        ops["x"] = 3;
         ops["+"] = 2; ops["-"] = 2;
         ops["("] = 1;
         Stack<string> result;
         Stack<string> operations;
-        for(string value: expression) {
+        for (string value : expression) {
             if (!isOperand(value))
             {
 
@@ -86,19 +81,20 @@ public:
     }
 
     Binnum<T> evaluate() {
-        auto *stack = new Stack<Binnum<T>>();
-        for (string e: expression) {
+        auto* stack = new Stack<Binnum<T>>();
+        for (string e : expression) {
             if (!isOperator(e)) {
                 try {
                     Binnum<T> num = Binnum<T>(stoi(e));
-                    cout << "Binary representation of operand: ";
-                    num.prt_bin();
+                    cout << "Binary representation of operand: " << num;
                     cout << endl;
                     stack->push(num);
-                } catch (std::invalid_argument &exc) {
+                }
+                catch (std::invalid_argument& exc) {
                     throw std::invalid_argument("Invalid symbol in expression");
                 }
-            } else {
+            }
+            else {
                 Binnum<T> a = stack->pop();
                 Binnum<T> b = stack->pop();
                 Binnum<T> r;
@@ -116,6 +112,3 @@ public:
         return result;
     }
 };
-
-
-#endif //TIGER_LAB2_STACKMACHINE_H
